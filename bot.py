@@ -256,9 +256,18 @@ async def main() -> None:
     if not token:
         raise RuntimeError("Set DISCORD_TOKEN in your environment or .env file")
 
-    await bot.add_cog(MusicBot(bot))
-    await bot.start(token)
+    try:
+        await bot.add_cog(MusicBot(bot))
+        await bot.start(token)
+    except (KeyboardInterrupt, asyncio.CancelledError):
+        print("Shutting down bot...")
+    finally:
+        if not bot.is_closed():
+            await bot.close()
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    try:
+        asyncio.run(main())
+    except KeyboardInterrupt:
+        print("Bot stopped.")
