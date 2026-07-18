@@ -14,6 +14,12 @@ A simple Python Discord music bot that can queue tracks from Spotify links, YouT
 - A Discord bot token
 - No Spotify credentials are required for Spotify link resolution
 
+### Install FFmpeg on Linux
+If you are using this container or Ubuntu/Debian, run:
+```bash
+sudo apt update && sudo apt install -y ffmpeg
+```
+
 ## Setup
 1. Create and activate a virtual environment:
    - python -m venv .venv
