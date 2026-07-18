@@ -256,7 +256,7 @@ async def main() -> None:
     if not token:
         raise RuntimeError("Set DISCORD_TOKEN in your environment or .env file")
 
-    bot.add_cog(MusicBot(bot))
+    await bot.add_cog(MusicBot(bot))
     await bot.start(token)
 
 
